@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.spandiar.jpa.transaction.dto.MenuItemServiceResponse;
 import com.spandiar.jpa.transaction.model.MenuItem;
 import com.spandiar.jpa.transaction.model.Restaurant;
 import com.spandiar.jpa.transaction.processor.MenuItemService;
@@ -51,7 +52,7 @@ public class MenuItemController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value=Restaurant.MENUITEM + "/{itemId}")
-	public MenuItem getMenuItem(@PathVariable("itemId") String itemId ) {
+	public MenuItemServiceResponse getMenuItem(@PathVariable("itemId") String itemId ) {
 		try {
 			return menuItemService.getMenuItem(itemId);
 		} catch(Exception exc) {
