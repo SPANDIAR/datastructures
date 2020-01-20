@@ -1,8 +1,12 @@
 package io.spandiar.binarytrees;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class MyBinaryTree {
 	
 	private BinaryNode rootNode;
+	private Queue<BinaryNode> binaryTreeChildren = new LinkedList<BinaryNode>();
 	
 	public BinaryNode getRootNode() {
 		return rootNode;
@@ -144,6 +148,25 @@ public class MyBinaryTree {
 		}
 	}
 	
+	public void printWidthFirstTraverse() {
+		
+		printWidthFirstTraverse(rootNode);
+	}
+
+	private void printWidthFirstTraverse(BinaryNode node) {
+		
+		if(node != null) {
+				//System.out.println(rootNode.key);
+				System.out.println(node.key);
+				// add the child nodes to a Queue
+				binaryTreeChildren.add(node.left);
+				binaryTreeChildren.add(node.right);		
+				
+				while(binaryTreeChildren.size() > 0) {
+					printWidthFirstTraverse(binaryTreeChildren.remove());
+			}
+		}
+	}
 
 	public static void main(String[] args) {
 		
@@ -178,14 +201,16 @@ public class MyBinaryTree {
 				myTree.max(myTree.getRootNode()).value);
 
 
-		myTree.deleteNode(1);
-		myTree.deleteNode(5);
-		myTree.deleteNode(12);
+		//myTree.deleteNode(1);
+		//myTree.deleteNode(5);
+		//myTree.deleteNode(12);
 
 		System.out.println("After deleting some nodes");
 		System.out.println("Min value in the tree is: " + myTree.min(myTree.getRootNode()).value);
 		System.out.println("Max value in the tree is: " + myTree.max(myTree.getRootNode()).value);
 		
-		myTree.printPreOrderTraversal();
+		//myTree.printPreOrderTraversal();
+		System.out.println("Width First Traversal");
+		myTree.printWidthFirstTraverse();
 	}
 }
