@@ -46,6 +46,9 @@ public class MenuItem {
 		@JsonIgnore
 		@Column(name="item_id")
 		private String itemId;
+		@Id
+		@Column(name="item_price_id")
+		private int itemPriceId;
 		@Column(name="item_price")
 		private float itemPrice;
 		@Column(name="currency")
@@ -61,6 +64,8 @@ public class MenuItem {
 		@JsonIgnore
 		@Column(name="created_By")
 		private String createdBy;
+		@Column(name="modified_date")
+		private Date modifiedDate;
 		
 		public MenuPrice() {
 			super();
@@ -107,6 +112,22 @@ public class MenuItem {
 		}
 		public void setCreatedBy(String createdBy) {
 			this.createdBy = createdBy;
+		}
+
+		public int getItemPriceId() {
+			return itemPriceId;
+		}
+
+		public void setItemPriceId(int itemPriceId) {
+			this.itemPriceId = itemPriceId;
+		}
+
+		public Date getModifiedDate() {
+			return modifiedDate;
+		}
+
+		public void setModifiedDate(Date modifiedDate) {
+			this.modifiedDate = modifiedDate;
 		}
 
 		@Override

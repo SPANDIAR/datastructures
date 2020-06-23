@@ -3,6 +3,8 @@ package com.spandiar.jpa.transaction.dto;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class MenuItemServiceResponse {
 
 	private List<MenuItemDetail> menuItem;
@@ -17,12 +19,14 @@ public class MenuItemServiceResponse {
 		private String createdBy;
 
 		public static class MenuPriceDetail {
-
+			
+			private int itemPriceId;
 			private float itemPrice;
 			private String currency;
 			private Date startDate;
 			private Date endDate;
 			private boolean isActive;
+			@JsonFormat (pattern = "yyyy-MM-dd HH:mm:ss")
 			private Date createdDate;
 			private String createdBy;
 			
@@ -69,6 +73,12 @@ public class MenuItemServiceResponse {
 				this.createdBy = createdBy;
 			}
 			
+			public int getItemPriceId() {
+				return itemPriceId;
+			}
+			public void setItemPriceId(int itemPriceId) {
+				this.itemPriceId = itemPriceId;
+			}
 			public MenuPriceDetail() {
 				super();
 			}

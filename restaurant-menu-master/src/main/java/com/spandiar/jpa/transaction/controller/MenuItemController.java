@@ -1,18 +1,19 @@
 package com.spandiar.jpa.transaction.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.spandiar.jpa.transaction.dto.MenuItemServiceResponse;
 import com.spandiar.jpa.transaction.model.MenuItem;
 import com.spandiar.jpa.transaction.model.Restaurant;
 import com.spandiar.jpa.transaction.processor.MenuItemService;
 
-import javax.websocket.server.PathParam;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +31,7 @@ public class MenuItemController {
 		try {
 			menuItemService.addMenuItem(itemToAdd);
 		} catch(Exception exc) {
-			logger.trace(exc.getMessage());
+			logger.error(exc.getMessage());
 		}
 	}
 	
@@ -57,8 +58,7 @@ public class MenuItemController {
 			return menuItemService.getMenuItem(itemId);
 		} catch(Exception exc) {
 			logger.error(exc.getMessage());
-			return null;
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, exc.getMessage(), exc.getCause());
 		}
 	}
-
 }

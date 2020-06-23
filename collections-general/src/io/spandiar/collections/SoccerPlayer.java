@@ -1,6 +1,8 @@
 package io.spandiar.collections;
 
-public class SoccerPlayer {
+import java.util.Comparator;
+
+public class SoccerPlayer implements Comparator<SoccerPlayer>{
 	
 	private int squadNumber;
 	private String position;
@@ -56,5 +58,19 @@ public class SoccerPlayer {
 	public void setNationality(String nationality) {
 		this.nationality = nationality;
 	}
+
+	@Override
+	public int compare(SoccerPlayer p1, SoccerPlayer p2) {
+		
+		return Integer.compare(p1.getSquadNumber(), p2.getSquadNumber());
+	}
+
+
+	@Override
+	public String toString() {
+		return "SoccerPlayer [squadNumber=" + squadNumber + ", name=" + name + "]";
+	}
+	
+	
 
 }

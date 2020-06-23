@@ -6,6 +6,7 @@ import java.util.Date;
 public class MenuPriceId implements Serializable {
 	
 	private String itemId;
+	private int itemPriceId;
 	private Date startDate;
 	private Date endDate;
 	
@@ -26,6 +27,13 @@ public class MenuPriceId implements Serializable {
 	}
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+	
+	public int getItemPriceId() {
+		return itemPriceId;
+	}
+	public void setItemPriceId(int itemPriceId) {
+		this.itemPriceId = itemPriceId;
 	}
 	public MenuPriceId() {
 		super();
