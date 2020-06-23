@@ -11,6 +11,7 @@ public class SoccerPlayer implements Comparator<SoccerPlayer> {
 	private String nationality;
 	private float height;
 	private float weight;
+	private float shoeSize;
 
 	public SoccerPlayer() {
 		super();
@@ -80,6 +81,14 @@ public class SoccerPlayer implements Comparator<SoccerPlayer> {
 
 	public void setWeight(float weight) {
 		this.weight = weight;
+	}
+
+	public float getShoeSize() {
+		return shoeSize;
+	}
+
+	public void setShoeSize(float shoeSize) {
+		this.shoeSize = shoeSize;
 	}
 
 	@Override
