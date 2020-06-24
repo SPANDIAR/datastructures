@@ -13,7 +13,6 @@ public class SoccerPlayer implements Comparator<SoccerPlayer> {
 	private float weight;
 	private float shoeSize;
 	private float waistSize;
-	private float biceps;
 
 	public SoccerPlayer() {
 		super();
